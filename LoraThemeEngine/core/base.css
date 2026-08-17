@@ -1,0 +1,14 @@
+body {
+  background: var(--lora-bg) !important;
+  color: var(--lora-text) !important;
+  font-family: var(--lora-font) !important;
+}
+
+/* Discord main surfaces */
+[class*="sidebar"],
+[class*="chat"],
+[class*="members"] {
+  background: var(--lora-panel) !important;
+  border-radius: var(--lora-radius);
+  transition: var(--lora-speed);
+}
