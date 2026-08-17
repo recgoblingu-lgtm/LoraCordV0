@@ -1,0 +1,20 @@
+/**
+ * @name LoraThemeEngine
+ * @author Lora
+ * @version 1.0.0
+ * @description Modular Discord theme engine with presets + effects
+ * @source https://https://github.com/recgoblingu-lgtm/LoraCordV0/new/main
+ */
+
+/* CORE SYSTEM */
+@import url("./core/core.css");
+
+/* BASE LAYER */
+@import url("./core/base.css");
+
+/* DEFAULT PRESET */
+@import url("./presets/neon.css");
+
+/* OPTIONAL MODULES */
+@import url("./modules/glow.css");
+@import url("./modules/crt.css");
