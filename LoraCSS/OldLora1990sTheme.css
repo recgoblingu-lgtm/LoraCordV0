@@ -1,0 +1,150 @@
+/**
+ * OLDLORA v1.0
+ * 1990s CRT / Windows 95 inspired Discord theme
+ * No cyber neon, no modern glass, pure retro UI feel
+ */
+
+/* =========================
+   BASE RESET
+========================= */
+
+html, body, #app-mount {
+    background: #000 !important;
+    font-family: "Courier New", monospace !important;
+}
+
+/* =========================
+   CRT BACKGROUND EFFECT
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -9999;
+
+    /* subtle CRT green/blue tint */
+    background: linear-gradient(
+        180deg,
+        #001100,
+        #000000,
+        #001a1a
+    );
+
+    filter: contrast(1.2) brightness(0.9);
+}
+
+/* scanline effect */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -9998;
+
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+/* =========================
+   MAIN UI (FLAT 90s WINDOWS STYLE)
+========================= */
+
+[class*="sidebar"],
+[class*="chat"],
+[class*="members"],
+[class*="container"],
+nav, main, section {
+    background: #c0c0c0 !important; /* classic windows gray */
+    border: 2px solid #808080 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* message panel slightly darker */
+[class*="chatContent"] {
+    background: #d4d0c8 !important;
+}
+
+/* =========================
+   FLAT OLD UI ELEMENTS
+========================= */
+
+[class*="channel"],
+[class*="message"],
+[class*="scroller"] {
+    background: transparent !important;
+}
+
+/* remove modern hover effects */
+* {
+    transition: none !important;
+    animation: none !important;
+    border-radius: 0 !important;
+}
+
+/* =========================
+   TEXT (CRT STYLE)
+========================= */
+
+span, div, p {
+    color: #000 !important;
+    font-size: 12px !important;
+}
+
+/* links classic blue */
+a {
+    color: #0000ee !important;
+    text-decoration: underline !important;
+}
+
+/* =========================
+   BUTTONS (WINDOWS 95 STYLE)
+========================= */
+
+button {
+    background: #c0c0c0 !important;
+    border-top: 2px solid #ffffff !important;
+    border-left: 2px solid #ffffff !important;
+    border-right: 2px solid #808080 !important;
+    border-bottom: 2px solid #808080 !important;
+
+    color: #000 !important;
+    font-family: "Courier New", monospace !important;
+}
+
+/* button press effect */
+button:active {
+    border-top: 2px solid #808080 !important;
+    border-left: 2px solid #808080 !important;
+    border-right: 2px solid #ffffff !important;
+    border-bottom: 2px solid #ffffff !important;
+}
+
+/* =========================
+   INPUT BOXES (OLD DESKTOP STYLE)
+========================= */
+
+input, textarea {
+    background: #ffffff !important;
+    border: 2px inset #808080 !important;
+    color: #000 !important;
+    font-family: "Courier New", monospace !important;
+}
+
+/* =========================
+   REMOVE MODERN OVERLAYS
+========================= */
+
+[class*="layer"],
+[class*="backdrop"],
+[class*="focusLock"] {
+    background: transparent !important;
+}
