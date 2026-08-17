@@ -1,0 +1,583 @@
+// ==UserScript==
+// @name         LoraCord Mini
+// @namespace    https://loracord.local
+// @version      1.0.1
+// @description  Small reliable LoraCord dashboard
+// @match        https://discord.com/*
+// @run-at       document-idle
+// @grant        none
+// ==/UserScript==
+
+(function () {
+    "use strict";
+
+    function start() {
+        if (!document.body) {
+            setTimeout(start, 500);
+            return;
+        }
+
+        // Remove old copy
+        document.getElementById("loracord-mini")?.remove();
+        document.getElementById("loracord-mini-button")?.remove();
+
+        // =========================
+        // CSS
+        // =========================
+
+        const style = document.createElement("style");
+
+        style.id = "loracord-mini-style";
+
+        style.textContent = `
+            #loracord-mini-button {
+                position: fixed;
+                right: 20px;
+                bottom: 20px;
+
+                width: 52px;
+                height: 52px;
+
+                border: none;
+                border-radius: 14px;
+
+                background: linear-gradient(
+                    135deg,
+                    #5865f2,
+                    #8b5cf6
+                );
+
+                color: white;
+                font-size: 22px;
+                font-weight: bold;
+
+                cursor: pointer;
+
+                z-index: 2147483647;
+
+                box-shadow:
+                    0 10px 30px
+                    rgba(0,0,0,.45);
+            }
+
+            #loracord-mini-button:hover {
+                transform: scale(1.05);
+            }
+
+            #loracord-mini {
+                position: fixed;
+
+                right: 20px;
+                bottom: 82px;
+
+                width: 330px;
+
+                background: #111214;
+                color: white;
+
+                border: 1px solid #2b2d31;
+                border-radius: 14px;
+
+                z-index: 2147483646;
+
+                box-shadow:
+                    0 20px 60px
+                    rgba(0,0,0,.65);
+
+                font-family:
+                    Arial,
+                    sans-serif;
+
+                overflow: hidden;
+
+                display: none;
+            }
+
+            #loracord-mini.open {
+                display: block;
+            }
+
+            .lc-header {
+                padding: 15px;
+
+                background: #18191c;
+
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                font-weight: bold;
+            }
+
+            .lc-version {
+                color: #72767d;
+                font-size: 10px;
+            }
+
+            .lc-tabs {
+                display: flex;
+
+                border-bottom:
+                    1px solid #2b2d31;
+            }
+
+            .lc-tab {
+                flex: 1;
+
+                padding: 10px;
+
+                border: none;
+
+                background: transparent;
+
+                color: #999;
+
+                cursor: pointer;
+            }
+
+            .lc-tab.active {
+                color: white;
+
+                background:
+                    #2b2d31;
+            }
+
+            .lc-content {
+                padding: 15px;
+            }
+
+            .lc-title {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .lc-sub {
+                color: #999;
+
+                font-size: 12px;
+
+                margin-bottom: 12px;
+            }
+
+            .lc-button {
+                width: 100%;
+
+                padding: 10px;
+
+                margin-top: 7px;
+
+                border: none;
+
+                border-radius: 8px;
+
+                background:
+                    #2b2d31;
+
+                color: white;
+
+                cursor: pointer;
+
+                text-align: left;
+            }
+
+            .lc-button:hover {
+                background:
+                    #5865f2;
+            }
+
+            .lc-status {
+                padding: 10px;
+
+                border-radius: 8px;
+
+                background:
+                    rgba(88,101,242,.12);
+
+                font-size: 11px;
+
+                margin-top: 10px;
+            }
+        `;
+
+        document.head.appendChild(style);
+
+        // =========================
+        // LAUNCHER
+        // =========================
+
+        const launcher =
+            document.createElement("button");
+
+        launcher.id =
+            "loracord-mini-button";
+
+        launcher.textContent =
+            "✦";
+
+        launcher.title =
+            "Open LoraCord";
+
+        document.body.appendChild(
+            launcher
+        );
+
+        // =========================
+        // PANEL
+        // =========================
+
+        const panel =
+            document.createElement("div");
+
+        panel.id =
+            "loracord-mini";
+
+        panel.innerHTML = `
+            <div class="lc-header">
+                <span>LoraCord</span>
+                <span class="lc-version">
+                    v1.0.1
+                </span>
+            </div>
+
+            <div class="lc-tabs">
+
+                <button
+                    class="lc-tab active"
+                    data-page="home">
+                    Home
+                </button>
+
+                <button
+                    class="lc-tab"
+                    data-page="plugins">
+                    Plugins
+                </button>
+
+                <button
+                    class="lc-tab"
+                    data-page="settings">
+                    Settings
+                </button>
+
+            </div>
+
+            <div
+                class="lc-content"
+                id="loracord-content">
+            </div>
+        `;
+
+        document.body.appendChild(
+            panel
+        );
+
+        const content =
+            document.getElementById(
+                "loracord-content"
+            );
+
+        // =========================
+        // PAGES
+        // =========================
+
+        function home() {
+            content.innerHTML = `
+                <div class="lc-title">
+                    Welcome
+                </div>
+
+                <div class="lc-sub">
+                    LoraCord is running.
+                </div>
+
+                <div class="lc-status">
+                    ● Dashboard online
+                </div>
+
+                <button
+                    class="lc-button"
+                    id="quick-reply">
+                    Insert Quick Reply
+                </button>
+
+                <button
+                    class="lc-button"
+                    id="copy-url">
+                    Copy Current URL
+                </button>
+            `;
+
+            document.getElementById(
+                "quick-reply"
+            ).onclick = function () {
+
+                const box =
+                    document.querySelector(
+                        '[role="textbox"]'
+                    );
+
+                if (!box) {
+                    alert(
+                        "Open a Discord text channel first."
+                    );
+
+                    return;
+                }
+
+                box.focus();
+
+                document.execCommand(
+                    "insertText",
+                    false,
+                    "Hello! This is a LoraCord quick reply."
+                );
+            };
+
+            document.getElementById(
+                "copy-url"
+            ).onclick = async function () {
+
+                try {
+                    await navigator.clipboard.writeText(
+                        location.href
+                    );
+
+                    alert(
+                        "URL copied!"
+                    );
+                } catch {
+                    alert(
+                        "Could not copy URL."
+                    );
+                }
+            };
+        }
+
+        function plugins() {
+            content.innerHTML = `
+                <div class="lc-title">
+                    Plugins
+                </div>
+
+                <div class="lc-sub">
+                    Small browser-safe features.
+                </div>
+
+                <button
+                    class="lc-button"
+                    id="theme">
+                    Change Accent
+                </button>
+
+                <button
+                    class="lc-button"
+                    id="fake-nitro">
+                    Toggle FakeNitro Cosmetic
+                </button>
+
+                <button
+                    class="lc-button"
+                    id="test">
+                    Test Plugin
+                </button>
+            `;
+
+            document.getElementById(
+                "theme"
+            ).onclick = function () {
+
+                launcher.style.background =
+                    launcher.style.background.includes(
+                        "00c8ff"
+                    )
+                        ? "linear-gradient(135deg,#5865f2,#8b5cf6)"
+                        : "linear-gradient(135deg,#00c8ff,#765cff)";
+            };
+
+            document.getElementById(
+                "fake-nitro"
+            ).onclick = function () {
+
+                document.body.classList.toggle(
+                    "loracord-fake-nitro"
+                );
+
+                alert(
+                    document.body.classList.contains(
+                        "loracord-fake-nitro"
+                    )
+                        ? "FakeNitro cosmetic ON"
+                        : "FakeNitro cosmetic OFF"
+                );
+            };
+
+            document.getElementById(
+                "test"
+            ).onclick = function () {
+
+                alert(
+                    "LoraCord plugin system works!"
+                );
+            };
+        }
+
+        function settings() {
+            content.innerHTML = `
+                <div class="lc-title">
+                    Settings
+                </div>
+
+                <div class="lc-sub">
+                    Basic LoraCord settings.
+                </div>
+
+                <button
+                    class="lc-button"
+                    id="close-settings">
+                    Close Panel
+                </button>
+
+                <button
+                    class="lc-button"
+                    id="reload">
+                    Reload Discord
+                </button>
+            `;
+
+            document.getElementById(
+                "close-settings"
+            ).onclick = function () {
+
+                panel.classList.remove(
+                    "open"
+                );
+            };
+
+            document.getElementById(
+                "reload"
+            ).onclick = function () {
+
+                location.reload();
+            };
+        }
+
+        // =========================
+        // TAB SWITCHING
+        // =========================
+
+        panel
+            .querySelectorAll(".lc-tab")
+            .forEach(function (tab) {
+
+                tab.onclick = function () {
+
+                    panel
+                        .querySelectorAll(".lc-tab")
+                        .forEach(function (item) {
+                            item.classList.remove(
+                                "active"
+                            );
+                        });
+
+                    tab.classList.add(
+                        "active"
+                    );
+
+                    const page =
+                        tab.dataset.page;
+
+                    if (page === "home") {
+                        home();
+                    }
+
+                    if (page === "plugins") {
+                        plugins();
+                    }
+
+                    if (page === "settings") {
+                        settings();
+                    }
+                };
+            });
+
+        // =========================
+        // OPEN/CLOSE
+        // =========================
+
+        launcher.onclick =
+            function () {
+
+                panel.classList.toggle(
+                    "open"
+                );
+            };
+
+        // =========================
+        // KEYBOARD
+        // =========================
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.ctrlKey &&
+                    event.shiftKey &&
+                    event.key.toLowerCase() === "l"
+                ) {
+                    event.preventDefault();
+
+                    panel.classList.toggle(
+                        "open"
+                    );
+                }
+
+                if (
+                    event.key === "Escape"
+                ) {
+                    panel.classList.remove(
+                        "open"
+                    );
+                }
+            }
+        );
+
+        // =========================
+        // FAKE NITRO COSMETIC CSS
+        // =========================
+
+        const cosmetic =
+            document.createElement("style");
+
+        cosmetic.textContent = `
+            body.loracord-fake-nitro
+            [class*="premium"],
+            body.loracord-fake-nitro
+            [class*="nitro"] {
+                filter:
+                    drop-shadow(
+                        0 0 8px
+                        rgba(255,115,250,.55)
+                    ) !important;
+            }
+        `;
+
+        document.head.appendChild(
+            cosmetic
+        );
+
+        // =========================
+        // INITIAL PAGE
+        // =========================
+
+        home();
+
+        console.log(
+            "[LoraCord] 1.0.1 loaded successfully."
+        );
+    }
+
+    start();
+
+})();
