@@ -1,0 +1,12 @@
+:root {
+  --lora-bg: #0b0b0f;
+  --lora-panel: #11111a;
+  --lora-accent: #ff2ea6;
+  --lora-text: #eaeaea;
+
+  --lora-radius: 10px;
+  --lora-blur: 12px;
+  --lora-speed: 0.2s;
+
+  --lora-font: "Segoe UI", sans-serif;
+}
