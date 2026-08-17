@@ -1,0 +1,100 @@
+/**
+ * @name LoraCord Neon Yellow
+ * @author LoraGPT
+ * @version 3.0
+ * @description Bright neon yellow high-visibility gradient theme (Vencord/BetterDiscord)
+ */
+
+:root {
+  --neon-yellow: #faff00;
+  --neon-yellow-soft: #e6ff00;
+  --neon-accent: #ffd000;
+  --dark-bg: #050505;
+}
+
+/* MAIN BACKGROUND */
+body, .appMount-2yBXZl {
+  background: linear-gradient(270deg, #050505, #0a0a0a, #111100, #1a1a00) !important;
+  background-size: 500% 500%;
+  animation: neonFlow 18s ease infinite;
+}
+
+@keyframes neonFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* PANELS */
+.container-2cd8Mz,
+.chat-2ZfjoI,
+.sidebar-1tnWFu,
+.members-3WRCEx {
+  background: rgba(10, 10, 0, 0.85) !important;
+  border: 1px solid rgba(255,255,0,0.15);
+  box-shadow: 0 0 20px rgba(255,255,0,0.05);
+}
+
+/* CHANNEL HOVER */
+.containerDefault-YUSmu3:hover {
+  background: linear-gradient(90deg, rgba(255,255,0,0.25), rgba(255,208,0,0.15)) !important;
+  box-shadow: 0 0 10px rgba(255,255,0,0.4);
+  transform: translateX(3px);
+}
+
+/* SELECTED CHANNEL */
+.modeSelected-3DmyhH {
+  background: linear-gradient(90deg, rgba(255,255,0,0.35), rgba(255,208,0,0.25)) !important;
+  border-left: 4px solid var(--neon-yellow);
+  box-shadow: 0 0 15px rgba(255,255,0,0.6);
+}
+
+/* MESSAGES */
+.message-2CShn3:hover {
+  background: rgba(255,255,0,0.08) !important;
+  box-shadow: inset 3px 0 0 var(--neon-yellow);
+}
+
+/* USERNAME GLOW */
+.username-h_Y3Us {
+  color: var(--neon-yellow) !important;
+  text-shadow: 0 0 6px var(--neon-yellow), 0 0 12px var(--neon-yellow-soft);
+}
+
+/* INPUT BOX */
+.channelTextArea-1FufC0 {
+  background: rgba(20,20,0,0.9) !important;
+  border: 1px solid rgba(255,255,0,0.25);
+  box-shadow: 0 0 10px rgba(255,255,0,0.2);
+}
+
+/* BUTTONS */
+button {
+  transition: all 0.2s ease;
+}
+button:hover {
+  background: var(--neon-yellow) !important;
+  color: black !important;
+  box-shadow: 0 0 12px var(--neon-yellow);
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--neon-yellow), var(--neon-accent));
+  border-radius: 10px;
+}
+
+/* MENTIONS */
+.mentioned-Tre-dv {
+  background: rgba(255,255,0,0.2) !important;
+  border-left: 4px solid var(--neon-yellow);
+}
+
+/* LINKS */
+a {
+  color: #fff700 !important;
+  text-shadow: 0 0 6px #fff700;
+}
