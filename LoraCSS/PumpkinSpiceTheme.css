@@ -1,7 +1,7 @@
 /**
- * OLDLORA — PUMPKIN SPICE LATTE THEME
- * Cozy fall café Discord aesthetic
- * Warm, soft, readable UI
+ * PSL ARCANE FIXED
+ * Proper pumpkin spice latte + magic UI
+ * Clear orange/beige palette (not faint)
  */
 
 /* =========================
@@ -9,19 +9,20 @@
 ========================= */
 
 html, body, #app-mount {
-    background: #1b120d !important;
-    font-family: "Inter", Arial, sans-serif !important;
+    background: #120b08 !important;
+    font-family: Inter, system-ui, sans-serif !important;
 }
 
-/* remove modern effects */
+/* reset effects */
 * {
-    border-radius: 10px !important;
+    border-radius: 12px !important;
     box-shadow: none !important;
     transition: none !important;
+    animation: none !important;
 }
 
 /* =========================
-   BACKGROUND (COZY CAFÉ GLOW)
+   BACKGROUND (REAL PSL BASE COLORS)
 ========================= */
 
 body::before {
@@ -31,16 +32,19 @@ body::before {
     z-index: -9999;
 
     background: radial-gradient(
-        circle at 50% 20%,
-        #3b2418,
-        #1b120d 60%,
-        #0f0a07 100%
+        circle at 50% 25%,
+        #3b2416,
+        #120b08 55%,
+        #070403 100%
     );
 
-    filter: saturate(1.1) brightness(0.9);
+    filter: saturate(1.15) brightness(0.9);
 }
 
-/* warm latte glow */
+/* =========================
+   COLOR AURA (CLEAR ORANGE + BEIGE + MAGIC)
+========================= */
+
 body::after {
     content: "";
     position: fixed;
@@ -49,34 +53,35 @@ body::after {
     pointer-events: none;
 
     background:
-        radial-gradient(circle at 25% 30%, rgba(255, 160, 90, 0.10), transparent 60%),
-        radial-gradient(circle at 75% 60%, rgba(255, 120, 60, 0.08), transparent 65%),
-        radial-gradient(circle at 50% 80%, rgba(255, 200, 140, 0.06), transparent 70%);
+        radial-gradient(circle at 20% 30%, rgba(255, 165, 90, 0.18), transparent 55%),
+        radial-gradient(circle at 75% 40%, rgba(255, 210, 170, 0.12), transparent 60%),
+        radial-gradient(circle at 55% 80%, rgba(170, 120, 255, 0.10), transparent 65%),
+        radial-gradient(circle at 40% 60%, rgba(0, 220, 255, 0.06), transparent 70%);
 }
 
 /* =========================
-   PANELS (COFFEE SHOP UI)
+   PANELS (CLEAR PSL STRUCTURE)
 ========================= */
 
 [class*="sidebar"],
 [class*="chat"],
 [class*="members"],
 [class*="container"] {
-    background: rgba(40, 26, 18, 0.92) !important;
-    border: 1px solid rgba(255, 200, 150, 0.08);
+    background: rgba(40, 25, 16, 0.92) !important;
+    border: 1px solid rgba(255, 170, 110, 0.20);
 }
 
-/* chat area (espresso base) */
+/* chat (espresso base) */
 [class*="chatContent"] {
-    background: rgba(25, 16, 12, 0.95) !important;
+    background: rgba(25, 15, 10, 0.96) !important;
 }
 
 /* =========================
-   TEXT (CREAM + COFFEE TONE)
+   TEXT (BEIGE / CREAM DOMINANT)
 ========================= */
 
 span, div, p {
-    color: #f3e7d3 !important;
+    color: #f3e2c9 !important;
 }
 
 /* usernames */
@@ -85,46 +90,46 @@ strong {
 }
 
 /* =========================
-   ACCENTS (PUMPKIN SPICE)
+   ACCENTS (NOW STRONG PSL ORANGE)
 ========================= */
 
 [class*="modeSelected"] {
-    background: rgba(255, 140, 70, 0.18) !important;
-    border-left: 2px solid rgba(255, 170, 90, 0.35);
+    background: rgba(255, 150, 80, 0.22) !important;
+    border-left: 3px solid rgba(255, 170, 110, 0.55);
 }
 
-/* links */
+/* links (clear orange) */
 a {
     color: #ffb36a !important;
 }
 
 /* =========================
-   BUTTONS (LATTE STYLE)
+   BUTTONS (COFFEE + PUMPKIN SPICE)
 ========================= */
 
 button {
-    background: #3a2418 !important;
-    border: 1px solid rgba(255, 180, 120, 0.2) !important;
-    color: #f3e7d3 !important;
+    background: #3a2416 !important;
+    border: 1px solid rgba(255, 170, 110, 0.25) !important;
+    color: #f3e2c9 !important;
 }
 
 button:hover {
-    background: #4a2f20 !important;
-    border-color: rgba(255, 170, 90, 0.35) !important;
+    background: #4a2e1c !important;
+    border-color: rgba(255, 170, 110, 0.45) !important;
 }
 
 /* =========================
-   INPUTS (COFFEE UI)
+   INPUTS
 ========================= */
 
 input, textarea {
-    background: #2a1a12 !important;
-    border: 1px solid rgba(255, 180, 120, 0.15) !important;
-    color: #f3e7d3 !important;
+    background: #2a180f !important;
+    border: 1px solid rgba(255, 170, 110, 0.20) !important;
+    color: #f3e2c9 !important;
 }
 
 /* =========================
-   CLEAN UI
+   CLEAN UI (NO LAG)
 ========================= */
 
 [class*="layer"],
