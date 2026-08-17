@@ -1,0 +1,110 @@
+/**
+ * ULTRA FORCE DISCORD BACKGROUND OVERRIDE
+ * Uses FULL app wallpaper layer + removes ALL surfaces
+ */
+
+:root {
+    --bg: url("https://cdn.discordapp.com/attachments/1167803492522537027/1538987827335794718/AVvXsEhcKwI-zoO6Gb1kDJ3E6DgZpcDdilvJQBgGJDQK9XXHkOJUH4jyb2acHNMR2aECkWHqn2RP8K2Uii5IKkV7S2eYNO0FCL-3DNdGvLyoPrNULqNrhVhlhVBQMDX8SUChrJdPT9g89caLFWLRI0vGYaGHbVY6SXHT2QdqeT4IzWdoaKIX6kAlU9Lsc0zMXu0s16000.png");
+}
+
+/* =========================
+   1. KILL ALL BACKGROUNDS
+========================= */
+
+* {
+    background-color: transparent !important;
+}
+
+/* Discord root layers */
+html, body, #app-mount {
+    background: transparent !important;
+}
+
+/* main app containers */
+.appMount-3lHmkl,
+.app-2CXKsg,
+.app-2rEoOp {
+    background: transparent !important;
+}
+
+/* =========================
+   2. FORCE GLOBAL BACKGROUND
+   (THIS IS THE IMPORTANT PART)
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: var(--bg) center/cover no-repeat fixed;
+    z-index: -9999;
+    transform: scale(1.05);
+}
+
+/* =========================
+   3. REMOVE DISCORD PANELS COMPLETELY
+========================= */
+
+[class*="sidebar"],
+[class*="chat"],
+[class*="container"],
+[class*="members"],
+[class*="panels"],
+[class*="content"],
+[class*="nowPlaying"],
+nav, main, section {
+    background: transparent !important;
+}
+
+/* =========================
+   4. GLASS EFFECT (SO IT STILL LOOKS CLEAN)
+========================= */
+
+[class*="sidebar"],
+[class*="chat"],
+[class*="members"] {
+    background: rgba(10, 0, 25, 0.35) !important;
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.08);
+}
+
+/* =========================
+   5. TEXT + NEON GLOW
+========================= */
+
+span, div, p, h1, h2, h3, h4 {
+    color: #f0f0ff !important;
+}
+
+a {
+    color: #00f6ff !important;
+    text-shadow: 0 0 8px #00f6ff;
+}
+
+/* =========================
+   6. BUTTONS GLOW HARD
+========================= */
+
+button {
+    background: linear-gradient(135deg, #7a00ff, #00f6ff) !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 0 18px #7a00ff;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #00f6ff;
+}
+
+/* =========================
+   7. REMOVE DARK OVERLAYS (DISCORD DOES THIS A LOT)
+========================= */
+
+[class*="backdrop"],
+[class*="layer"],
+[class*="overlay"] {
+    background: transparent !important;
+}
