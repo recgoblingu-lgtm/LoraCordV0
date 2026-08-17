@@ -1,0 +1,134 @@
+/**
+ * OLDLORA — PUMPKIN SPICE LATTE THEME
+ * Cozy fall café Discord aesthetic
+ * Warm, soft, readable UI
+ */
+
+/* =========================
+   BASE
+========================= */
+
+html, body, #app-mount {
+    background: #1b120d !important;
+    font-family: "Inter", Arial, sans-serif !important;
+}
+
+/* remove modern effects */
+* {
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    transition: none !important;
+}
+
+/* =========================
+   BACKGROUND (COZY CAFÉ GLOW)
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -9999;
+
+    background: radial-gradient(
+        circle at 50% 20%,
+        #3b2418,
+        #1b120d 60%,
+        #0f0a07 100%
+    );
+
+    filter: saturate(1.1) brightness(0.9);
+}
+
+/* warm latte glow */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -9998;
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle at 25% 30%, rgba(255, 160, 90, 0.10), transparent 60%),
+        radial-gradient(circle at 75% 60%, rgba(255, 120, 60, 0.08), transparent 65%),
+        radial-gradient(circle at 50% 80%, rgba(255, 200, 140, 0.06), transparent 70%);
+}
+
+/* =========================
+   PANELS (COFFEE SHOP UI)
+========================= */
+
+[class*="sidebar"],
+[class*="chat"],
+[class*="members"],
+[class*="container"] {
+    background: rgba(40, 26, 18, 0.92) !important;
+    border: 1px solid rgba(255, 200, 150, 0.08);
+}
+
+/* chat area (espresso base) */
+[class*="chatContent"] {
+    background: rgba(25, 16, 12, 0.95) !important;
+}
+
+/* =========================
+   TEXT (CREAM + COFFEE TONE)
+========================= */
+
+span, div, p {
+    color: #f3e7d3 !important;
+}
+
+/* usernames */
+strong {
+    color: #ffffff !important;
+}
+
+/* =========================
+   ACCENTS (PUMPKIN SPICE)
+========================= */
+
+[class*="modeSelected"] {
+    background: rgba(255, 140, 70, 0.18) !important;
+    border-left: 2px solid rgba(255, 170, 90, 0.35);
+}
+
+/* links */
+a {
+    color: #ffb36a !important;
+}
+
+/* =========================
+   BUTTONS (LATTE STYLE)
+========================= */
+
+button {
+    background: #3a2418 !important;
+    border: 1px solid rgba(255, 180, 120, 0.2) !important;
+    color: #f3e7d3 !important;
+}
+
+button:hover {
+    background: #4a2f20 !important;
+    border-color: rgba(255, 170, 90, 0.35) !important;
+}
+
+/* =========================
+   INPUTS (COFFEE UI)
+========================= */
+
+input, textarea {
+    background: #2a1a12 !important;
+    border: 1px solid rgba(255, 180, 120, 0.15) !important;
+    color: #f3e7d3 !important;
+}
+
+/* =========================
+   CLEAN UI
+========================= */
+
+[class*="layer"],
+[class*="backdrop"],
+[class*="focusLock"] {
+    background: transparent !important;
+}
