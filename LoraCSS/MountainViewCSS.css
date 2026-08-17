@@ -1,106 +1,73 @@
 /**
- * Neon Mountain Discord Theme
- * Background: your provided 4K mountains image
+ * HARD FORCE NEON MOUNTAIN BACKGROUND THEME
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-
 :root {
-    /* BACKGROUND */
-    --app-bg: url("https://cdn.discordapp.com/attachments/1167803492522537027/1538986711281827891/mountains-4k-cool-hd-wallpaper-preview.png");
-    --app-blur: 10px;
-
-    /* NEON COLORS */
-    --neon-pink: #ff00ff;
-    --neon-cyan: #00f6ff;
-    --neon-purple: #7a00ff;
-    --neon-green: #00ff88;
-
-    /* UI COLORS */
-    --text-normal: #e9e9ff;
-    --text-muted: rgba(233, 233, 255, 0.6);
-
-    --bg-overlay: rgba(5, 0, 20, 0.65);
-    --panel-bg: rgba(10, 0, 30, 0.55);
-
-    --radius: 14px;
+    --bg-image: url("https://cdn.discordapp.com/attachments/1167803492522537027/1538986711281827891/mountains-4k-cool-hd-wallpaper-preview.png");
 }
 
-/* APP BACKGROUND */
-body {
-    font-family: "Inter", sans-serif !important;
+/* 1. STRIP ALL DEFAULT BACKGROUNDS */
+html, body, #app-mount, .appMount-3lHmkl {
+    background: transparent !important;
 }
 
-/* FULL BACKGROUND IMAGE */
-.appMount-3lHmkl,
-.app-2rEoOp,
-.bg-h5JY_x {
-    background: var(--app-bg) center/cover no-repeat fixed !important;
-}
-
-/* DARK OVERLAY FOR READABILITY */
-.bg-h5JY_x::before {
+/* 2. FORCE FULLSCREEN BACKGROUND LAYER (THIS IS THE KEY PART) */
+body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: var(--bg-overlay);
-    backdrop-filter: blur(var(--app-blur));
+    background: var(--bg-image) center/cover no-repeat fixed;
+    z-index: -9999;
+    transform: scale(1.02);
 }
 
-/* MAIN PANELS */
-.sidebar,
-.container-2lgZY8,
-.chat-3bRxxu,
-.chatContent-3KubbW,
-.members-1998pB {
-    background: var(--panel-bg) !important;
-    border-radius: var(--radius);
-    box-shadow: 0 0 25px rgba(0, 246, 255, 0.08);
+/* 3. MAKE EVERYTHING TRANSPARENT SO IMAGE SHOWS THROUGH */
+div, section, main, nav, header, aside {
+    background-color: transparent !important;
 }
 
-/* TEXT */
-span, div, h1, h2, h3, h4, h5, p {
-    color: var(--text-normal) !important;
+/* 4. DISCORD CORE PANELS */
+[class*="app"],
+[class*="bg"],
+[class*="container"],
+[class*="chat"],
+[class*="sidebar"],
+[class*="members"] {
+    background: transparent !important;
 }
 
-/* LINKS */
+/* 5. GLASS EFFECT SO IT STILL LOOKS CLEAN */
+[class*="chat"],
+[class*="sidebar"],
+[class*="container"],
+[class*="members"] {
+    background: rgba(10, 0, 25, 0.45) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 14px;
+}
+
+/* 6. TEXT CLEANUP */
+span, div, p, h1, h2, h3, h4, h5 {
+    color: #e9e9ff !important;
+}
+
+/* 7. LINKS + NEON GLOW */
 a {
-    color: var(--neon-cyan) !important;
-    text-shadow: 0 0 8px var(--neon-cyan);
+    color: #00f6ff !important;
+    text-shadow: 0 0 8px #00f6ff;
 }
 
-/* BUTTONS */
+/* 8. BUTTONS GO NEON */
 button {
-    background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan)) !important;
-    border: none !important;
+    background: linear-gradient(135deg, #7a00ff, #00f6ff) !important;
     color: white !important;
+    border: none !important;
     border-radius: 10px !important;
-    box-shadow: 0 0 12px var(--neon-purple);
-    transition: 0.2s ease;
+    box-shadow: 0 0 15px #7a00ff;
 }
 
-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px var(--neon-cyan);
-}
-
-/* ACCENT / HIGHLIGHTS */
-.selected-1Drb7Z,
-.modeSelected-346R90 {
-    background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple)) !important;
-    box-shadow: 0 0 15px var(--neon-pink);
-}
-
-/* SCROLLBARS */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(var(--neon-cyan), var(--neon-purple));
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: transparent;
+/* 9. REMOVE DISCORD DEFAULT BACKDROP OVERLAYS */
+[class*="layer"],
+[class*="backdrop"] {
+    background: transparent !important;
 }
