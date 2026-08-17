@@ -1,0 +1,106 @@
+/**
+ * Neon Mountain Discord Theme
+ * Background: your provided 4K mountains image
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+:root {
+    /* BACKGROUND */
+    --app-bg: url("https://cdn.discordapp.com/attachments/1167803492522537027/1538986711281827891/mountains-4k-cool-hd-wallpaper-preview.png");
+    --app-blur: 10px;
+
+    /* NEON COLORS */
+    --neon-pink: #ff00ff;
+    --neon-cyan: #00f6ff;
+    --neon-purple: #7a00ff;
+    --neon-green: #00ff88;
+
+    /* UI COLORS */
+    --text-normal: #e9e9ff;
+    --text-muted: rgba(233, 233, 255, 0.6);
+
+    --bg-overlay: rgba(5, 0, 20, 0.65);
+    --panel-bg: rgba(10, 0, 30, 0.55);
+
+    --radius: 14px;
+}
+
+/* APP BACKGROUND */
+body {
+    font-family: "Inter", sans-serif !important;
+}
+
+/* FULL BACKGROUND IMAGE */
+.appMount-3lHmkl,
+.app-2rEoOp,
+.bg-h5JY_x {
+    background: var(--app-bg) center/cover no-repeat fixed !important;
+}
+
+/* DARK OVERLAY FOR READABILITY */
+.bg-h5JY_x::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: var(--bg-overlay);
+    backdrop-filter: blur(var(--app-blur));
+}
+
+/* MAIN PANELS */
+.sidebar,
+.container-2lgZY8,
+.chat-3bRxxu,
+.chatContent-3KubbW,
+.members-1998pB {
+    background: var(--panel-bg) !important;
+    border-radius: var(--radius);
+    box-shadow: 0 0 25px rgba(0, 246, 255, 0.08);
+}
+
+/* TEXT */
+span, div, h1, h2, h3, h4, h5, p {
+    color: var(--text-normal) !important;
+}
+
+/* LINKS */
+a {
+    color: var(--neon-cyan) !important;
+    text-shadow: 0 0 8px var(--neon-cyan);
+}
+
+/* BUTTONS */
+button {
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan)) !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 10px !important;
+    box-shadow: 0 0 12px var(--neon-purple);
+    transition: 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--neon-cyan);
+}
+
+/* ACCENT / HIGHLIGHTS */
+.selected-1Drb7Z,
+.modeSelected-346R90 {
+    background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple)) !important;
+    box-shadow: 0 0 15px var(--neon-pink);
+}
+
+/* SCROLLBARS */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--neon-cyan), var(--neon-purple));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
