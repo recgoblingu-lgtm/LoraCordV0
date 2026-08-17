@@ -1,0 +1,153 @@
+/**
+ * @name LoraCord Rainbow
+ * @version 1.0
+ * @description Fully animated rainbow Discord theme framework
+ */
+
+/* =========================
+   CORE VARIABLES
+========================= */
+
+:root {
+
+  /* Background */
+  --lc-bg: url("https://i.imgur.com/your-image.gif");
+  --lc-dim: 0.55;
+
+  /* UI */
+  --lc-radius: 14px;
+  --lc-speed: 8s;
+
+  /* Rainbow engine */
+  --lc-rainbow: linear-gradient(
+    90deg,
+    #ff004c,
+    #ff7a00,
+    #ffee00,
+    #2bff00,
+    #00ffe7,
+    #0066ff,
+    #b300ff,
+    #ff004c
+  );
+
+  --lc-text: #ffffff;
+}
+
+/* =========================
+   ANIMATED RAINBOW ENGINE
+========================= */
+
+@keyframes lc_rainbow_shift {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes lc_gradient_move {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* =========================
+   BACKGROUND SYSTEM
+========================= */
+
+#app-mount {
+  background: var(--lc-bg) center/cover no-repeat !important;
+}
+
+#app-mount::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,var(--lc-dim));
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* =========================
+   GLOBAL RAINBOW OVERLAY
+========================= */
+
+body {
+  animation: lc_rainbow_shift var(--lc-speed) linear infinite;
+}
+
+/* =========================
+   GLASS PANELS
+========================= */
+
+[class*="chat"],
+[class*="sidebar"],
+[class*="members"],
+[class*="panels"] {
+  background: rgba(0,0,0,0.35) !important;
+  backdrop-filter: blur(12px);
+  border-radius: var(--lc-radius);
+}
+
+/* =========================
+   RAINBOW ACCENTS
+========================= */
+
+[class*="selected"],
+[class*="interactive"]:hover {
+  background: var(--lc-rainbow) !important;
+  background-size: 400% 400%;
+  animation: lc_gradient_move 6s linear infinite;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+  border-radius: var(--lc-radius) !important;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  filter: hue-rotate(180deg) brightness(1.2);
+  transform: scale(1.03);
+}
+
+/* =========================
+   TEXT RAINBOW EFFECT
+========================= */
+
+h1, h2, h3, span, div {
+  color: var(--lc-text);
+}
+
+/* Optional rainbow text mode */
+.lc-rainbow-text {
+  background: var(--lc-rainbow);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: lc_gradient_move 6s linear infinite;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lc-rainbow);
+  background-size: 400% 400%;
+  animation: lc_gradient_move 6s linear infinite;
+  border-radius: 10px;
+}
+
+/* =========================
+   SIDEBAR / SERVER LIST
+========================= */
+
+[class*="guilds"] {
+  background: rgba(0,0,0,0.4) !important;
+  animation: lc_rainbow_shift 10s linear infinite;
+}
