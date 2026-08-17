@@ -1,0 +1,109 @@
+/**
+ * @name LoraCord MAX Neon Purple
+ * @author LoraGPT
+ * @version 4.0
+ * @description FULL neon purple UI (everything forced)
+ */
+
+:root {
+  --neon-purple: #a855f7;
+  --neon-purple-strong: #c084fc;
+  --neon-glow: rgba(168, 85, 247, 0.9);
+  --bg-dark: #050008;
+}
+
+/* ===== GLOBAL FORCE ===== */
+* {
+  color: var(--neon-purple-strong) !important;
+  border-color: var(--neon-purple) !important;
+}
+
+/* ===== BACKGROUND ===== */
+body, .appMount-2yBXZl {
+  background: radial-gradient(circle at top, #1a0033, #050008 80%) !important;
+}
+
+/* ===== ALL PANELS ===== */
+div[class*="container"],
+div[class*="chat"],
+div[class*="sidebar"],
+div[class*="members"],
+section,
+main {
+  background: rgba(20, 0, 40, 0.85) !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px var(--neon-glow);
+}
+
+/* ===== CHANNELS ===== */
+div[class*="containerDefault"]:hover {
+  background: linear-gradient(90deg, rgba(168,85,247,0.4), rgba(192,132,252,0.3)) !important;
+  box-shadow: 0 0 12px var(--neon-glow);
+}
+
+div[class*="modeSelected"] {
+  background: linear-gradient(90deg, rgba(168,85,247,0.6), rgba(192,132,252,0.4)) !important;
+  box-shadow: 0 0 18px var(--neon-glow);
+  border-left: 4px solid var(--neon-purple);
+}
+
+/* ===== MESSAGES ===== */
+div[class*="message"]:hover {
+  background: rgba(168,85,247,0.1) !important;
+  box-shadow: inset 3px 0 0 var(--neon-purple);
+}
+
+/* ===== TEXT (FORCED NEON) ===== */
+span, div, p, h1, h2, h3, h4, h5, h6 {
+  color: var(--neon-purple-strong) !important;
+  text-shadow: 0 0 6px var(--neon-purple), 0 0 12px var(--neon-purple);
+}
+
+/* ===== USERNAMES ===== */
+[class*="username"] {
+  color: #d8b4fe !important;
+  text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple);
+}
+
+/* ===== INPUT BOX ===== */
+div[class*="channelTextArea"] {
+  background: rgba(30, 0, 60, 0.9) !important;
+  border: 2px solid var(--neon-purple);
+  box-shadow: 0 0 15px var(--neon-glow);
+}
+
+/* ===== BUTTONS ===== */
+button {
+  background: rgba(168,85,247,0.2) !important;
+  color: var(--neon-purple-strong) !important;
+  box-shadow: 0 0 10px var(--neon-glow);
+  transition: 0.2s;
+}
+
+button:hover {
+  background: var(--neon-purple) !important;
+  color: black !important;
+  box-shadow: 0 0 20px var(--neon-glow);
+}
+
+/* ===== LINKS ===== */
+a {
+  color: #e9d5ff !important;
+  text-shadow: 0 0 8px var(--neon-purple);
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--neon-purple), var(--neon-purple-strong));
+  box-shadow: 0 0 10px var(--neon-glow);
+}
+
+/* ===== MENTIONS ===== */
+div[class*="mentioned"] {
+  background: rgba(168,85,247,0.25) !important;
+  border-left: 4px solid var(--neon-purple);
+  box-shadow: 0 0 12px var(--neon-glow);
+}
