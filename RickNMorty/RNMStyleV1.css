@@ -1,0 +1,105 @@
+/* ================================
+   RICK & MORTY DISCORD THEME
+   Background + Neon Portal UI
+================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+
+/* BACKGROUND */
+body {
+    background: url("https://cdn.discordapp.com/attachments/1543272374378430617/1543648614499487784/sOgAWx4XZ6or76CSWeAAAA.png")
+    center / cover fixed !important;
+}
+
+/* DARK OVERLAY (makes text readable) */
+.appMount-3lHmkl,
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 10, 20, 0.65);
+    z-index: -1;
+}
+
+/* GLOBAL FONT */
+* {
+    font-family: "Orbitron", sans-serif !important;
+}
+
+/* SIDEBAR (portal glow green) */
+.sidebar-2K8pFh,
+[class*="sidebar"] {
+    background: rgba(10, 20, 25, 0.6) !important;
+    border-right: 1px solid #00ff88;
+    box-shadow: 0 0 20px #00ff88;
+}
+
+/* TOP BAR */
+.title-31SJ6t,
+[class*="title"] {
+    background: rgba(0, 255, 136, 0.15) !important;
+    color: #00ff88 !important;
+    text-shadow: 0 0 10px #00ff88;
+}
+
+/* CHAT AREA */
+.chatContent-3KubbW,
+[class*="chat"] {
+    background: rgba(0, 0, 0, 0.35) !important;
+}
+
+/* MESSAGES */
+.messageContent-2t3eCI,
+[class*="messageContent"] {
+    color: #d0ffe0 !important;
+}
+
+/* LINKS (portal glow) */
+a {
+    color: #00ff88 !important;
+    text-shadow: 0 0 8px #00ff88;
+}
+
+/* INPUT BOX */
+.channelTextArea-1FufC0,
+[class*="channelTextArea"] {
+    background: rgba(0, 20, 10, 0.5) !important;
+    border: 1px solid #00ff88 !important;
+    box-shadow: 0 0 15px #00ff88;
+}
+
+/* BUTTONS */
+button {
+    background: rgba(0, 255, 136, 0.15) !important;
+    border: 1px solid #00ff88 !important;
+    color: #00ff88 !important;
+}
+
+button:hover {
+    box-shadow: 0 0 15px #00ff88;
+    transform: scale(1.02);
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00ff88;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00ff88;
+}
+
+/* EMBEDS */
+.embedFull-2tM8--,
+[class*="embed"] {
+    background: rgba(0, 255, 136, 0.08) !important;
+    border-left: 3px solid #00ff88 !important;
+}
+
+/* SELECTION */
+::selection {
+    background: #00ff88;
+    color: black;
+}
