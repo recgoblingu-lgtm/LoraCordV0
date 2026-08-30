@@ -1,0 +1,98 @@
+
+/* ================================
+   RICK & MORTY MAGENTA TRANSPARENT
+   LIGHTWEIGHT GLASS STYLE
+================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+
+/* BACKGROUND IMAGE */
+body {
+    background: url("https://cdn.discordapp.com/attachments/1543272374378430617/1543648614499487784/sOgAWx4XZ6or76CSWeAAAA.png")
+    center / cover fixed !important;
+}
+
+/* DARK OVERLAY (keeps readability, still transparent) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 0, 20, 0.45); /* LOWER OPACITY = more background visible */
+    z-index: -1;
+}
+
+/* FONT */
+* {
+    font-family: "Orbitron", sans-serif !important;
+}
+
+/* ================================
+   TRANSPARENT UI (NO LAG BLUR)
+================================ */
+
+[class*="app"],
+[class*="chat"],
+[class*="sidebar"],
+[class*="container"],
+[class*="guilds"] {
+    background: rgba(15, 0, 25, 0.35) !important; /* TRANSPARENT */
+    border: 1px solid rgba(255, 61, 242, 0.4) !important;
+}
+
+/* TOP BAR */
+[class*="title"] {
+    background: rgba(25, 0, 40, 0.4) !important;
+    color: #ff3df2 !important;
+    text-shadow: 0 0 8px #ff3df2;
+}
+
+/* TEXT */
+.messageContent,
+[class*="messageContent"] {
+    color: #ffd6ff !important;
+}
+
+/* LINKS */
+a {
+    color: #ff3df2 !important;
+    text-shadow: 0 0 6px #ff3df2;
+}
+
+/* INPUT BOX */
+[class*="channelTextArea"] {
+    background: rgba(20, 0, 30, 0.35) !important;
+    border: 1px solid rgba(255, 61, 242, 0.5) !important;
+}
+
+/* BUTTONS */
+button {
+    background: rgba(30, 0, 45, 0.35) !important;
+    border: 1px solid rgba(255, 61, 242, 0.5) !important;
+    color: #ffb3ff !important;
+}
+
+button:hover {
+    background: rgba(60, 0, 80, 0.45) !important;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff3df2;
+    border-radius: 10px;
+}
+
+/* EMBEDS */
+[class*="embed"] {
+    background: rgba(20, 0, 30, 0.4) !important;
+    border-left: 3px solid #ff3df2 !important;
+}
+
+/* SELECTION */
+::selection {
+    background: #ff3df2;
+    color: black;
+}
