@@ -1,0 +1,95 @@
+
+/* ================================
+   RICK & MORTY MAGENTA (FIXED BG)
+   BACKGROUND NOW ACTUALLY SHOWS
+================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+
+/* FORCE DISCORD ROOT BACKGROUND TRANSPARENT */
+html, body {
+    background: transparent !important;
+}
+
+/* MAIN DISCORD APP BACKGROUND LAYERS */
+#app-mount,
+.appMount-3lHmkl,
+.app-2CXKsg,
+div[class^="app"] {
+    background: transparent !important;
+}
+
+/* BACKGROUND IMAGE LAYER (FORCE IT VISIBLE) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("https://cdn.discordapp.com/attachments/1543272374378430617/1543648614499487784/sOgAWx4XZ6or76CSWeAAAA.png")
+    center / cover no-repeat;
+    z-index: -2;
+}
+
+/* DARK OVERLAY (keeps readability) */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 0, 20, 0.35);
+    z-index: -1;
+}
+
+/* FONT */
+* {
+    font-family: "Orbitron", sans-serif !important;
+}
+
+/* ================================
+   MAKE DISCORD PANELS TRANSPARENT
+================================ */
+
+[class*="sidebar"],
+[class*="chat"],
+[class*="container"],
+[class*="guilds"] {
+    background: rgba(15, 0, 25, 0.35) !important;
+}
+
+/* TOP BAR */
+[class*="title"] {
+    background: rgba(25, 0, 40, 0.35) !important;
+    color: #ff3df2 !important;
+}
+
+/* TEXT */
+.messageContent,
+[class*="messageContent"] {
+    color: #ffd6ff !important;
+}
+
+/* LINKS */
+a {
+    color: #ff3df2 !important;
+}
+
+/* INPUT */
+[class*="channelTextArea"] {
+    background: rgba(20, 0, 30, 0.35) !important;
+    border: 1px solid rgba(255, 61, 242, 0.5) !important;
+}
+
+/* BUTTONS */
+button {
+    background: rgba(30, 0, 45, 0.35) !important;
+    border: 1px solid rgba(255, 61, 242, 0.5) !important;
+}
+
+/* EMBEDS */
+[class*="embed"] {
+    background: rgba(20, 0, 30, 0.4) !important;
+    border-left: 3px solid #ff3df2 !important;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar-thumb {
+    background: #ff3df2;
+}
