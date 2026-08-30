@@ -1,0 +1,102 @@
+/* ================================
+   RICK & MORTY BLUE GLASS THEME
+================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+
+/* BACKGROUND IMAGE */
+body {
+    background: url("https://cdn.discordapp.com/attachments/1543272374378430617/1543648614499487784/sOgAWx4XZ6or76CSWeAAAA.png")
+    center / cover fixed !important;
+}
+
+/* GLOBAL DARK OVERLAY (slightly transparent) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 10, 25, 0.55);
+    z-index: -1;
+}
+
+/* FONT */
+* {
+    font-family: "Orbitron", sans-serif !important;
+}
+
+/* ================================
+   GLASS PANELS (MAIN UI)
+================================ */
+
+[class*="app"],
+[class*="chat"],
+[class*="sidebar"],
+[class*="container"] {
+    background: rgba(10, 25, 50, 0.45) !important; /* HALF TRANSPARENT */
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(80, 180, 255, 0.25);
+    box-shadow: 0 0 25px rgba(80, 180, 255, 0.15);
+}
+
+/* TOP BAR */
+[class*="title"] {
+    background: rgba(0, 60, 120, 0.35) !important;
+    color: #7fd0ff !important;
+    text-shadow: 0 0 10px #4db8ff;
+}
+
+/* TEXT */
+.messageContent,
+[class*="messageContent"] {
+    color: #d6f0ff !important;
+}
+
+/* LINKS */
+a {
+    color: #4db8ff !important;
+    text-shadow: 0 0 8px #4db8ff;
+}
+
+/* INPUT BOX */
+[class*="channelTextArea"] {
+    background: rgba(10, 40, 80, 0.35) !important;
+    border: 1px solid rgba(100, 200, 255, 0.4) !important;
+    box-shadow: 0 0 15px rgba(80, 180, 255, 0.2);
+}
+
+/* BUTTONS */
+button {
+    background: rgba(20, 80, 140, 0.3) !important;
+    border: 1px solid rgba(100, 200, 255, 0.4) !important;
+    color: #a8ddff !important;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: rgba(60, 140, 220, 0.35) !important;
+    box-shadow: 0 0 18px rgba(80, 180, 255, 0.4);
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(80, 160, 255, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(80, 160, 255, 0.5);
+}
+
+/* EMBEDS */
+[class*="embed"] {
+    background: rgba(20, 60, 120, 0.25) !important;
+    border-left: 3px solid #4db8ff !important;
+    backdrop-filter: blur(10px);
+}
+
+/* SELECTION */
+::selection {
+    background: #4db8ff;
+    color: black;
+}
