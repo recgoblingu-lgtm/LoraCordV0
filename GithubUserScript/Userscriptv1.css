@@ -1,0 +1,108 @@
+// ==UserScript==
+// @name         GitHub Ultra Classic UI (2006 Web Style)
+// @namespace    https://github.com/
+// @version      1.0
+// @description  Turns GitHub into old-school flat 2000s website style
+// @match        https://github.com/*
+// @grant        GM_addStyle
+// ==/UserScript==
+
+(function () {
+    'use strict';
+
+    const logoURL = "https://cdn.phototourl.com/member/2026-10-03-f96b3e30-f7ca-464b-a8d1-34e442216e2b.png";
+
+    function patchLogos() {
+        document.querySelectorAll('img').forEach(img => {
+            if (
+                img.src.includes("github") ||
+                img.alt?.toLowerCase().includes("logo") ||
+                img.width < 200
+            ) {
+                img.src = logoURL;
+                img.style.imageRendering = "pixelated";
+            }
+        });
+    }
+
+    const observer = new MutationObserver(patchLogos);
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    patchLogos();
+
+    GM_addStyle(`
+        * {
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            transition: none !important;
+            animation: none !important;
+            backdrop-filter: none !important;
+        }
+
+        body {
+            background: #dcdcdc !important;
+            font-family: Arial, Helvetica, sans-serif !important;
+        }
+
+        header, .Header, .AppHeader {
+            background: #2b2b2b !important;
+            border-bottom: 3px solid #ffcc00 !important;
+        }
+
+        nav {
+            background: #e2e2e2 !important;
+        }
+
+        main {
+            background: #f4f4f4 !important;
+        }
+
+        .Box, .Box-body, .Box-header {
+            background: #ffffff !important;
+            border: 1px solid #999 !important;
+        }
+
+        button, .btn {
+            background: #e0e0e0 !important;
+            border: 1px solid #666 !important;
+            color: #000 !important;
+        }
+
+        button:hover, .btn:hover {
+            background: #d6d6d6 !important;
+        }
+
+        a {
+            color: #0033cc !important;
+        }
+
+        footer {
+            background: #2b2b2b !important;
+            color: #fff !important;
+            border-top: 3px solid #ffcc00 !important;
+        }
+
+        input, textarea {
+            border: 1px solid #666 !important;
+            background: #fff !important;
+        }
+
+        /* kill modern spacing */
+        div {
+            border-radius: 0 !important;
+        }
+
+        /* scrollbar old web */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #ddd;
+        }
+    `);
+})();
