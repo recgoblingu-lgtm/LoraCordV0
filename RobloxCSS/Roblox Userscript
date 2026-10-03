@@ -1,0 +1,132 @@
+// ==UserScript==
+// @name         Roblox Ultra Old Era (2006-2012 Full Rebuild)
+// @namespace    http://tampermonkey.net/
+// @version      2.0
+// @description  Fully old Roblox UI + logo replacer
+// @match        https://www.roblox.com/*
+// @match        https://web.roblox.com/*
+// @grant        GM_addStyle
+// ==/UserScript==
+
+(function () {
+    'use strict';
+
+    const logoURL = "https://cdn.phototourl.com/member/2026-10-03-f96b3e30-f7ca-464b-a8d1-34e442216e2b.png";
+
+    // REPLACE LOGOS
+    const replaceLogos = () => {
+        document.querySelectorAll("img").forEach(img => {
+            const src = img.src || "";
+            if (
+                src.includes("roblox") ||
+                src.includes("logo") ||
+                src.includes("brand") ||
+                src.includes("Roblox")
+            ) {
+                img.src = logoURL;
+                img.style.imageRendering = "pixelated";
+            }
+        });
+    };
+
+    setInterval(replaceLogos, 1000);
+
+    GM_addStyle(`
+        /* FULL RESET (OLD WEB FEEL) */
+        * {
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+            backdrop-filter: none !important;
+            transition: none !important;
+            animation: none !important;
+        }
+
+        body {
+            background: #dcdcdc !important;
+            font-family: Arial, Helvetica, sans-serif !important;
+        }
+
+        /* TOP BAR OLD STYLE */
+        #header, .navbar, .site-header {
+            background: #2a2a2a !important;
+            border-bottom: 3px solid #ffcc00 !important;
+        }
+
+        /* MAIN CONTAINERS */
+        .container-main,
+        .content,
+        .content-container,
+        main {
+            background: #f0f0f0 !important;
+            border: 1px solid #aaa !important;
+        }
+
+        /* SIDEBAR */
+        nav, aside {
+            background: #e2e2e2 !important;
+            border-right: 1px solid #999 !important;
+        }
+
+        /* GAME CARDS */
+        .game-tile,
+        .game-card,
+        .game-card-container {
+            background: #fff !important;
+            border: 1px solid #999 !important;
+        }
+
+        .game-card:hover {
+            outline: 2px solid #ffcc00 !important;
+            transform: none !important;
+        }
+
+        /* BUTTONS OLD STYLE */
+        button {
+            background: #e6e6e6 !important;
+            border: 1px solid #666 !important;
+            color: #000 !important;
+        }
+
+        button:hover {
+            background: #dcdcdc !important;
+        }
+
+        /* LINKS */
+        a {
+            color: #0033cc !important;
+        }
+
+        /* FOOTER */
+        footer, .rbx-footer {
+            background: #2a2a2a !important;
+            border-top: 3px solid #ffcc00 !important;
+            color: white !important;
+        }
+
+        /* INPUTS */
+        input, textarea {
+            border: 1px solid #666 !important;
+            background: #fff !important;
+        }
+
+        /* REMOVE MODERN SPACING STYLE */
+        div {
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+
+        /* SCROLLBAR OLD STYLE */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #ddd;
+        }
+    `);
+})();
